@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+.events-container {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding: 20px;
+  background-color: #f9f9f9;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.section h2 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.cards-container {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  padding-bottom: 20px;
+}
+
+.event-card {
+  flex: 0 0 auto;
+  width: 331px;  /* Updated width */
+  height: 360px; /* Updated height */
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* .event-card:hover {
+  transform: scale(1.05);
+} */
+
+.card-content {
+  position: absolute;
+  bottom: 10px; /* Slightly raised to avoid overlap */
+  left: 10px;
+  gap: 700px;
+  right: 10px;
+  background: none; /* Removed dark overlay */
+  color: white;
+  padding: 10px;
+  text-align: center;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5); /* Improves text readability */
+}
+
+.card-content h3 {
+  margin: 0;
+  font-size: 20px;
+}
+
+.checkbox-container {
+  margin-top: 10px;
+}
+
+.checkbox-container span {
+  font-size: 18px;
+  color: white; /* Ensures visibility */
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); /* Enhances contrast */
+}
+
+.navigation-marks {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 10px;
+}
+
+.navigation-marks span {
+  cursor: pointer;
+  font-size: 24px;
+  color: #333;
+}
+
+.navigation-marks span:hover {
+  color: #007bff;
+}
+
+/* Specific styles for Snow Treks section */
+.snow-treks-section .event-card {
+  width: 250px;
+  height: 150px;
+  background-size: cover; /* Ensures images are visible */
+  background-position: center;
+}
+
+.snow-treks-section .card-content {
+  padding: 10px;
+  background: none; /* Fully removed dark background */
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+}
+
+.snow-treks-section .card-content h3 {
+  font-size: 18px;
+}
+
+.snow-treks-section .checkbox-container span {
+  font-size: 16px;
+}
+.card-content h3 {
+  font-family: 'Pacifico', cursive;  /* Matches decorative script style */
+  font-size: 28px; /* Adjust size to match the image */
+  color: white;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Adds depth for readability */
+  margin: 0;
+  text-align: center;
+}
