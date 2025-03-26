@@ -1,10 +1,12 @@
 import React, { useState } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navigation from "./components/Navigation";
 import Hero from "./components/hero";
 import './App.css';
 import EventsSection from "./components/Eventsection";
 import Footer from "./components/footer"; // Import the Footer component
 import IMAGES from "./assets/images/image";
+import DetailedPage from "./components/Detailedpage";
 
 const App = () => {
   // State for highlighted events
@@ -21,12 +23,22 @@ const App = () => {
   const [navTitle, setNavTitle] = useState('HiddenSafari');
 
   return (
-    <>
+    <Router>
       <Navigation title={navTitle} />
-      <Hero backgroundImage={heroBackground} />
-      <EventsSection highlightedEvents={highlightedEvents} />
-      <Footer /> {/* Added Footer component here */}
-    </>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <>
+              <Hero backgroundImage={heroBackground} />
+              <EventsSection highlightedEvents={highlightedEvents} />
+              <Footer />
+            </>
+          }
+        />
+        <Route path="/details" element={<DetailedPage />} />
+      </Routes>
+    </Router>
   );
 };
 

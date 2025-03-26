@@ -23,6 +23,7 @@ const IMAGES = {
     Milton : new URL('./Milton.png', import.meta.url).href,
     Annie : new URL('./Annie.png', import.meta.url).href,
     Sandra : new URL('./Sandra.png', import.meta.url).href,
+    GreenMountain : new URL('./GreenMountain.png', import.meta.url).href,
     
 
 }
