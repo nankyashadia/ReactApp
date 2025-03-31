@@ -4,7 +4,7 @@ import Navigation from "./components/Navigation";
 import Hero from "./components/hero";
 import './App.css';
 import EventsSection from "./components/Eventsection";
-import Footer from "./components/footer"; // Import the Footer component
+import Footer from "./components/Footer"; // Import the Footer component
 import IMAGES from "./assets/images/image";
 import DetailedPage from "./components/Detailedpage";
 

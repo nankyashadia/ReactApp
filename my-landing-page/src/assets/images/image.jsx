@@ -24,6 +24,12 @@ const IMAGES = {
     Annie : new URL('./Annie.png', import.meta.url).href,
     Sandra : new URL('./Sandra.png', import.meta.url).href,
     GreenMountain : new URL('./GreenMountain.png', import.meta.url).href,
+    Day1 : new URL('./Day1.png', import.meta.url).href,
+    Day2 : new URL('./Day2.png', import.meta.url).href,
+    Day3 : new URL('./Day3.png', import.meta.url).href,
+    Day4 : new URL('./Day4.png', import.meta.url).href,
+    Day5 : new URL('./Day5.png', import.meta.url).href,
+    Day6 : new URL('./Day6.png', import.meta.url).href,
     
 
 }
