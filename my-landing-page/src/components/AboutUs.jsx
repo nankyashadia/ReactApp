@@ -1,9 +1,10 @@
 import React from 'react';
+import VisionSection from './VisionSection';
+import MissionSection from './MissionSection';
+import ObjectiveSection from './ObjectiveSection';
 import Footer from './Footer';
-import Confidentiality from './Confidentiality';
-import CookieUsage from './CookieUsage';
 
-const PrivacyPolicy = () => {
+const AboutUs = () => {
   return (
     <div className="min-h-screen text-gray-900 bg-white">
       {/* Navigation Section with Orange Background */}
@@ -11,22 +12,22 @@ const PrivacyPolicy = () => {
         <div className="mt-4 flex items-center">
           <div>
             <div className="mb-17"></div>
-            <p className="ml-4 text-xl">Privacy policy</p>
-            <p className="ml-4 text-xl">Meet the heroes behind our Success.</p>
+            <p className="ml-4 text-xl">About Us</p>
+            <p className="ml-4 text-xl">Our vision, mission and objectives</p>
           </div>
         </div>
       </div>
 
       {/* Content Section */}
       <div className="max-w-4xl mx-auto py-8 px-6">
-        <Confidentiality />
-        <CookieUsage />
+        <VisionSection />
+        <MissionSection />
+        <ObjectiveSection />
+      
       </div>
-
-      {/* Footer Section */}
       <Footer />
     </div>
   );
 };
 
-export default PrivacyPolicy;
+export default AboutUs;

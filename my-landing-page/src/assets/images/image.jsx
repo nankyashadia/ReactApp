@@ -35,6 +35,7 @@ const IMAGES = {
     image4 : new URL('./image4.png', import.meta.url).href,
     image5 : new URL('./image5.png', import.meta.url).href,
     image7 : new URL('./image7.png', import.meta.url).href,
+    image16 : new URL('./image16.png', import.meta.url).href,
     Emily : new URL('./Emily.png', import.meta.url).href,
     Emmy : new URL('./Emmy.png', import.meta.url).href,
     Hana : new URL('./Hana.png', import.meta.url).href,

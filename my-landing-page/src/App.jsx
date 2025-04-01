@@ -11,6 +11,8 @@ import Events from "./components/events";
 import Contact from "./components/contact";
 import Teams from "./components/Teams";  // Changed from Contact to Teams
 import PrivacyPolicy from "./components/PrivacyPolicy"; 
+import TermsAndConditions from "./components/TermsAndConditions"; 
+import AboutUs from "./components/AboutUs";
 
 const App = () => {
   const [highlightedEvents, setHighlightedEvents] = useState([
@@ -40,7 +42,9 @@ const App = () => {
         <Route path="/events" element={<Events />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/teams" element={<Teams />} />  {/* Changed path to /teams */}
-        <Route path="/policy" element={<PrivacyPolicy />} />  
+        <Route path="/policy" element={<PrivacyPolicy />} />
+        <Route path="/terms" element={<TermsAndConditions />} /> 
+        <Route path="/about" element={<AboutUs />} />    
       </Routes>
     </Router>
   );

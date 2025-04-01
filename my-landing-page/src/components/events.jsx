@@ -45,7 +45,7 @@ const Events = () => {
           ].map((tour, index) => (
             <div key={index} className="bg-white rounded-lg overflow-hidden shadow-lg">
               <img src={tour.img} alt={tour.title} className="w-full h-48 object-cover" />
-              <div className="p-6 text-gray-800">
+              <div className="p-6 text-gray-800 ">
                 <h3 className="text-xl font-bold mb-2">{tour.title}</h3>
                 <div className="flex items-center justify-between mb-2">
                   <p className="text-orange-600 font-semibold">From {tour.price}</p>
