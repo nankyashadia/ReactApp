@@ -30,6 +30,23 @@ const IMAGES = {
     Day4 : new URL('./Day4.png', import.meta.url).href,
     Day5 : new URL('./Day5.png', import.meta.url).href,
     Day6 : new URL('./Day6.png', import.meta.url).href,
+    Zebra : new URL('./Zebra.png', import.meta.url).href,
+    image3 : new URL('./image3.png', import.meta.url).href,
+    image4 : new URL('./image4.png', import.meta.url).href,
+    image5 : new URL('./image5.png', import.meta.url).href,
+    image7 : new URL('./image7.png', import.meta.url).href,
+    Emily : new URL('./Emily.png', import.meta.url).href,
+    Emmy : new URL('./Emmy.png', import.meta.url).href,
+    Hana : new URL('./Hana.png', import.meta.url).href,
+    Jite : new URL('./Jite.png', import.meta.url).href,
+    William : new URL('./William.png', import.meta.url).href,
+    Manek : new URL('./Manek.png', import.meta.url).href,
+    Sofi : new URL('./Sofi.png', import.meta.url).href,
+    Rosam : new URL('./Rosam.png', import.meta.url).href,
+    
+
+
+
     
 
 }
