@@ -1,6 +1,7 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { FaLinkedin, FaFacebook, FaInstagram, FaYoutube, FaSearch } from "react-icons/fa";
-import { PiThreadsLogoBold } from "react-icons/pi"; // Import Threads logo icon
+import { PiThreadsLogoBold } from "react-icons/pi";
 import "../App.css";
 
 const Footer = () => {
@@ -8,11 +9,11 @@ const Footer = () => {
     <footer className="footer">
       <h2 className="footer-title">HiddenSafari</h2>
       <nav className="footer-nav">
-        <a href="#">Teams</a>
-        <a href="#">About</a>
-        <a href="#">Events</a>
-        <a href="#">Contact US</a>
-        <a href="#">Terms and Condition</a>
+        <Link to="/teams">Teams</Link>
+        <Link to="/about">About</Link>
+        <Link to="/events">Events</Link>
+        <Link to="/contact">Contact Us</Link>
+        <Link to="/terms">Terms and Conditions</Link>
       </nav>
       <div className="footer-subscribe">
         <input type="email" placeholder="Enter your Email" />

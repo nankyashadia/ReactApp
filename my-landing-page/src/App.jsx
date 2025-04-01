@@ -9,9 +9,9 @@ import IMAGES from "./assets/images/image";
 import DetailedPage from "./components/Detailedpage";
 import Events from "./components/events";
 import Contact from "./components/contact";
-import Teams from "./components/Teams";  // Changed from Contact to Teams
-import PrivacyPolicy from "./components/PrivacyPolicy"; 
-import TermsAndConditions from "./components/TermsAndConditions"; 
+import Teams from "./components/Teams";
+import PrivacyPolicy from "./components/PrivacyPolicy";
+import TermsAndConditions from "./components/TermsAndConditions";
 import AboutUs from "./components/AboutUs";
 
 const App = () => {
@@ -28,6 +28,7 @@ const App = () => {
     <Router>
       <Navigation title={navTitle} />
       <Routes>
+        {/* Home Page with Hero, Events, and Footer */}
         <Route
           path="/"
           element={
@@ -38,13 +39,18 @@ const App = () => {
             </>
           }
         />
+        
+        {/* Other Pages */}
         <Route path="/details" element={<DetailedPage />} />
         <Route path="/events" element={<Events />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/teams" element={<Teams />} />  {/* Changed path to /teams */}
+        <Route path="/teams" element={<Teams />} />
+        <Route path="/about" element={<AboutUs />} />
         <Route path="/policy" element={<PrivacyPolicy />} />
-        <Route path="/terms" element={<TermsAndConditions />} /> 
-        <Route path="/about" element={<AboutUs />} />    
+        <Route path="/terms" element={<TermsAndConditions />} />
+        
+        {/* You can add a 404 page for unmatched routes */}
+        <Route path="*" element={<div>Page Not Found</div>} />
       </Routes>
     </Router>
   );
