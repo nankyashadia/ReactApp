@@ -150,8 +150,13 @@ const WhyPeopleLoveInvincible = ({ profileImages }) => {
   );
 };
 
+const EventsSection = () => {
+  const [highlightedEvents] = useState([
+    { title: 'Kilimanjaro', backgroundImage: IMAGES.Kirimanjalo },
+    { title: 'Madagascar', backgroundImage: IMAGES.madagascar },
+    { title: 'Cape Town', backgroundImage: IMAGES.CapeTown }
+  ]);
 
-const EventsSection = ({ highlightedEvents }) => {
   const [snowTreks] = useState([
     { title: 'Kilimanjaro', backgroundImage: IMAGES.KirimanjaloTrek },
     { title: 'Mount Kenya', backgroundImage: IMAGES.MountainKenya },
@@ -185,6 +190,7 @@ const EventsSection = ({ highlightedEvents }) => {
 
   return (
     <div className="events-container p-4">
+      {/* Highlighted Events */}
       <div className="section mb-10">
         <h6 className="text-lg font-semibold mb-2">Highlighted Events</h6>
         <p className="text-gray-600 mb-4">Recommended camps by our Instructors</p>
@@ -195,6 +201,7 @@ const EventsSection = ({ highlightedEvents }) => {
         </div>
       </div>
 
+      {/* Other event categories */}
       <div className="section snow-treks-section mb-10">
         <h2 className="text-2xl font-bold mb-2">Snow Treks</h2>
         <p className="text-gray-600 mb-4">Experience the magic of winter landscapes with our guided snow treks</p>

@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navigation from "./components/Navigation";
-import Hero from "./components/hero";
-import './App.css';
+import Hero from "./components/Hero";
 import EventsSection from "./components/Eventsection";
 import Footer from "./components/Footer";
 import IMAGES from "./assets/images/image";
@@ -13,43 +12,51 @@ import Teams from "./components/Teams";
 import PrivacyPolicy from "./components/PrivacyPolicy";
 import TermsAndConditions from "./components/TermsAndConditions";
 import AboutUs from "./components/AboutUs";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 const App = () => {
-  const [highlightedEvents, setHighlightedEvents] = useState([
-    { title: 'Kilimanjaro', backgroundImage: IMAGES.Kirimanjalo },
-    { title: 'Madagascar', backgroundImage: IMAGES.madagascar },
-    { title: 'Cape Town', backgroundImage: IMAGES.CapeTown }
-  ]);
-
-  const [heroBackground, setHeroBackground] = useState(IMAGES.backgroundimage);
-  const [navTitle, setNavTitle] = useState('HiddenSafari');
-
   return (
     <Router>
-      <Navigation title={navTitle} />
+      <Navigation title="HiddenSafari" />
       <Routes>
-        {/* Home Page with Hero, Events, and Footer */}
+        {/* Home Page */}
         <Route
           path="/"
           element={
             <>
-              <Hero backgroundImage={heroBackground} />
-              <EventsSection highlightedEvents={highlightedEvents} />
+              <Hero backgroundImage={IMAGES.backgroundimage} />
+              <EventsSection />
               <Footer />
             </>
           }
         />
         
-        {/* Other Pages */}
-        <Route path="/details" element={<DetailedPage />} />
-        <Route path="/events" element={<Events />} />
+        {/* Protected Routes */}
+        <Route
+          path="/details"
+          element={
+            <ProtectedRoute>
+              <DetailedPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/events"
+          element={
+            <ProtectedRoute>
+              <Events />
+            </ProtectedRoute>
+          }
+        />
+        
+        {/* Public Routes */}
         <Route path="/contact" element={<Contact />} />
         <Route path="/teams" element={<Teams />} />
         <Route path="/about" element={<AboutUs />} />
         <Route path="/policy" element={<PrivacyPolicy />} />
         <Route path="/terms" element={<TermsAndConditions />} />
         
-        {/* You can add a 404 page for unmatched routes */}
+        {/* 404 Page */}
         <Route path="*" element={<div>Page Not Found</div>} />
       </Routes>
     </Router>
