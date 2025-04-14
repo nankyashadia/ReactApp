@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { ENDPOINTS } from '../Utilities/Util';
 import { FaBus, FaUtensils, FaHome, FaHiking, FaBriefcaseMedical, FaStar } from 'react-icons/fa';
-import './EventsSection.css';
+import "./Eventssection.css";
 import IMAGES from '../assets/images/image';
 import VIDEOS from '../assets/videos/video';
 
