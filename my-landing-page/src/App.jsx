@@ -13,13 +13,15 @@ import PrivacyPolicy from "./components/PrivacyPolicy";
 import TermsAndConditions from "./components/TermsAndConditions";
 import AboutUs from "./components/AboutUs";
 import ProtectedRoute from "./components/ProtectedRoute";
+import Login from "./components/LoginPage";
+import ProfilePage from "./components/ProfilePage"; // ✅ Added this
 
 const App = () => {
   return (
     <Router>
       <Navigation title="HiddenSafari" />
       <Routes>
-        {/* Home Page */}
+        {/* Public Routes */}
         <Route
           path="/"
           element={
@@ -30,33 +32,29 @@ const App = () => {
             </>
           }
         />
-        
-        {/* Protected Routes */}
-        <Route
-          path="/details"
-          element={
-            <ProtectedRoute>
-              <DetailedPage />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/events"
-          element={
-            <ProtectedRoute>
-              <Events />
-            </ProtectedRoute>
-          }
-        />
-        
-        {/* Public Routes */}
         <Route path="/contact" element={<Contact />} />
-        <Route path="/teams" element={<Teams />} />
         <Route path="/about" element={<AboutUs />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/privacypolicy" element={<PrivacyPolicy />} />
+        <Route path="/termsandconditions" element={<TermsAndConditions />} />
+        <Route path="/detailpage" element={<DetailedPage />} />
+        <Route path="/events" element={<Events />} />
+        <Route path="/teams" element={<Teams />} />
         <Route path="/policy" element={<PrivacyPolicy />} />
         <Route path="/terms" element={<TermsAndConditions />} />
-        
-        {/* 404 Page */}
+        <Route path="/details" element={<DetailedPage />} />
+
+        {/* ✅ Protected Route */}
+        <Route
+          path="/profile"
+          element={
+            <ProtectedRoute>
+              <ProfilePage />
+            </ProtectedRoute>
+          }
+        />
+
+        {/* 404 Not Found */}
         <Route path="*" element={<div>Page Not Found</div>} />
       </Routes>
     </Router>

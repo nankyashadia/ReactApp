@@ -115,3 +115,49 @@
   margin: 0;
   text-align: center;
 }
+
+
+/* Horizontal Scroll */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.snap-x {
+  scroll-snap-type: x mandatory;
+}
+
+.snap-start {
+  scroll-snap-align: start;
+}
+
+/* Scroll Buttons */
+.fixed {
+  position: fixed;
+  transform: translateY(-50%);
+}
+
+.fixed button {
+  transition: all 0.3s ease;
+  opacity: 0.7;
+}
+
+.fixed button:hover {
+  opacity: 1;
+  transform: scale(1.1) translateY(-50%);
+}
+
+@media (max-width: 768px) {
+  .fixed button {
+    display: none;
+  }
+}
+
+/* Ensure sections take full width */
+.flex-none {
+  flex: none;
+}

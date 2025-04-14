@@ -1,28 +1,64 @@
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { ENDPOINTS } from "../Utilities/Util";
+
 import BookingConfirmation from "./BookingConfirmation";
 import Payment from "./Payment";
 import CancellationsRefunds from "./CancellationsRefunds";
 import Footer from './Footer';
 
 const TermsAndConditions = () => {
+  const [termsContent, setTermsContent] = useState("");
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    const fetchTerms = async () => {
+      try {
+        const response = await axios.get(ENDPOINTS.TERMS_CONDITIONS);
+        setTermsContent(response.data?.content || "No content available.");
+      } catch (err) {
+        setError("Failed to load terms and conditions.");
+        console.error(err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchTerms();
+  }, []);
+
   return (
     <div className="min-h-screen text-gray-900 bg-white">
-      {/* Navigation Section with Orange Background */}
+      {/* Header */}
       <div className="bg-[#E05C2A] text-white py-4 px-6">
         <div className="mt-4 flex items-center">
           <div>
-            <div className="mb-17"></div> {/* Keeping this as per your request */}
-            <p className="ml-4 text-xl">Terms and Condition</p>
+            <div className="mb-17"></div>
+            <p className="ml-4 text-xl">Terms and Conditions</p>
             <p className="ml-4 text-xl">Meet the heroes behind our Success.</p>
           </div>
         </div>
       </div>
 
-      {/* Imported Sections */}
+      {/* Dynamic Terms Content */}
+      <div className="px-6 py-8 max-w-4xl mx-auto">
+        {loading ? (
+          <p>Loading...</p>
+        ) : error ? (
+          <p className="text-red-500">{error}</p>
+        ) : (
+          <div className="whitespace-pre-line text-gray-800 leading-relaxed">
+            {termsContent}
+          </div>
+        )}
+      </div>
+
+      {/* Static Sections
       <BookingConfirmation />
       <Payment />
-      <CancellationsRefunds />
-            {/* Footer Section */}
-            <Footer />
+      <CancellationsRefunds /> */}
+      <Footer />
     </div>
   );
 };

@@ -1,20 +1,24 @@
-import React, { useState, useEffect } from "react";
-import { Navigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Navigate, useLocation } from "react-router-dom";
 
 const ProtectedRoute = ({ children }) => {
-  const [isAuthenticated, setIsAuthenticated] = useState(null); // Start as null to prevent flickering
+  const [isAuthenticated, setIsAuthenticated] = useState(null);
+  const location = useLocation();
 
   useEffect(() => {
-    // Read authentication status from localStorage
-    const authStatus = localStorage.getItem("auth") === "true";
-    setIsAuthenticated(authStatus);
-  }, []);
+    const token = localStorage.getItem("auth") === "true";
+    setIsAuthenticated(token);
+  }, [location.pathname]);
 
   if (isAuthenticated === null) {
-    return <div>Loading...</div>; // Prevents initial flickering
+    return <div>Checking authentication...</div>;
   }
 
-  return isAuthenticated ? children : <Navigate to="/" replace />;
+  return isAuthenticated ? (
+    children
+  ) : (
+    <Navigate to="/login" state={{ from: location }} replace />
+  );
 };
 
 export default ProtectedRoute;
