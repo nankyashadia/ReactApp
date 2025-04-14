@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navigation from "./components/Navigation";
-import Hero from "./components/Hero";
+import Hero from "./components/hero";
 import EventsSection from "./components/Eventsection";
 import Footer from "./components/Footer";
 import IMAGES from "./assets/images/image";
