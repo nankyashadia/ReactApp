@@ -7,7 +7,7 @@ import Footer from "./components/Footer";
 import IMAGES from "./assets/images/image";
 import DetailedPage from "./components/Detailedpage";
 import Events from "./components/events";
-import Contact from "./components/contact";
+import Contact from "./components/Contact";
 import Teams from "./components/Teams";
 import PrivacyPolicy from "./components/PrivacyPolicy";
 import TermsAndConditions from "./components/TermsAndConditions";
