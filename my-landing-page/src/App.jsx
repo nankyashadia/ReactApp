@@ -16,6 +16,10 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import Login from "./components/LoginPage";
 import ProfilePage from "./components/ProfilePage"; // ✅ Added this
 
+
+
+
+
 const App = () => {
   return (
     <Router>

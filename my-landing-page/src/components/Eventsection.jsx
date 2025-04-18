@@ -112,23 +112,19 @@ const EventsSection = () => {
   const specialRef = useRef(null);
   const experienceRef = useRef(null);
 
-  // Enhanced scroll functions with boundary checks
+  // Scroll functions for each section
   const scrollLeft = (ref) => {
     if (ref.current) {
-      const { scrollLeft, clientWidth, scrollWidth } = ref.current;
-      const scrollAmount = Math.min(300, scrollLeft); // Don't scroll past start
-      ref.current.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+      ref.current.scrollBy({ left: -300, behavior: 'smooth' });
     }
   };
 
   const scrollRight = (ref) => {
     if (ref.current) {
-      const { scrollLeft, clientWidth, scrollWidth } = ref.current;
-      const maxScroll = scrollWidth - clientWidth;
-      const scrollAmount = Math.min(300, maxScroll - scrollLeft); // Don't scroll past end
-      ref.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+      ref.current.scrollBy({ left: 300, behavior: 'smooth' });
     }
   };
+
   useEffect(() => {
     const fetchEvents = async () => {
       const fetcher = async (endpoint, setter, fallbackData = []) => {

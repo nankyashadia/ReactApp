@@ -1,6 +1,6 @@
 // src/Utilities/Util.js
 
-export const API_BASE_URL = "http://54.210.95.246:3005/api/v1";
+export const API_BASE_URL = "https://sample-project-api.chordifyed.com/api/v1";
 
 export const ENDPOINTS = {
   TEAM: `${API_BASE_URL}/team`,
