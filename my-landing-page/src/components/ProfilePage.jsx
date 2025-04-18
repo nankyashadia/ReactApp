@@ -34,7 +34,7 @@ const ProfilePage = () => {
         <div className="relative flex justify-center">
           <img
             src=""
-            alt="Profile"
+          alt="Profile"
             className="w-28 h-28 rounded-full object-cover border-4 border-white shadow-md"
           />
           <div className="absolute bottom-2 right-[35%] bg-blue-500 p-2 rounded-full cursor-pointer hover:bg-blue-600">

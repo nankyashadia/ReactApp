@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import { ENDPOINTS } from '../Utilities/Util';
 import { FaBus, FaUtensils, FaHome, FaHiking, FaBriefcaseMedical, FaStar } from 'react-icons/fa';
@@ -103,7 +103,27 @@ const EventsSection = () => {
     special: true,
     testimonials: true
   });
-  
+
+  // Create refs for each scrollable section
+  const highlightedRef = useRef(null);
+  const summerRef = useRef(null);
+  const snowRef = useRef(null);
+  const epicRef = useRef(null);
+  const specialRef = useRef(null);
+  const experienceRef = useRef(null);
+
+  // Scroll functions for each section
+  const scrollLeft = (ref) => {
+    if (ref.current) {
+      ref.current.scrollBy({ left: -300, behavior: 'smooth' });
+    }
+  };
+
+  const scrollRight = (ref) => {
+    if (ref.current) {
+      ref.current.scrollBy({ left: 300, behavior: 'smooth' });
+    }
+  };
 
   useEffect(() => {
     const fetchEvents = async () => {
@@ -150,7 +170,6 @@ const EventsSection = () => {
         (async () => {
           try {
             const response = await axios.get(ENDPOINTS.TESTIMONIALS);
-            // Properly map the testimonial data to match the component props
             setTestimonials(response.data.map(testimonial => ({
               name: testimonial.name,
               role: testimonial.role,
@@ -160,7 +179,6 @@ const EventsSection = () => {
             })));
           } catch (err) {
             console.error("Error fetching testimonials:", err);
-            // Fallback testimonials with proper structure
             setTestimonials([
               {
                 name: "Sarah Johnson",
@@ -199,77 +217,209 @@ const EventsSection = () => {
   return (
     <div className="events-container p-4">
       {/* Highlighted Events */}
-      <div className="section mb-10">
+      <div className="section mb-10 relative">
         <h6 className="text-lg font-semibold mb-2">Highlighted Events</h6>
         <p className="text-gray-600 mb-4">Recommended camps by our Instructors</p>
 
         {error && <p className="text-red-500">{error}</p>}
 
-        {isLoading.highlighted ? (
-          <p>Loading highlighted events...</p>
-        ) : (
-          <div className="cards-container">
-            {highlightedEvents.map((event, index) => (
-              <EventCard key={index} title={event.title} backgroundImage={event.backgroundImage} showIcons={true} />
-            ))}
-          </div>
-        )}
+        <div className="relative">
+          <button 
+            onClick={() => scrollLeft(highlightedRef)}
+            className="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 bg-white rounded-full p-2 shadow-md hover:bg-gray-100"
+            aria-label="Scroll left"
+          >
+            &lt;
+          </button>
+          <button 
+            onClick={() => scrollRight(highlightedRef)}
+            className="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 bg-white rounded-full p-2 shadow-md hover:bg-gray-100"
+            aria-label="Scroll right"
+          >
+            &gt;
+          </button>
+          {isLoading.highlighted ? (
+            <p>Loading highlighted events...</p>
+          ) : (
+            <div 
+              className="cards-container flex overflow-x-auto scrollbar-hide space-x-4 py-4" 
+              ref={highlightedRef}
+              style={{ scrollBehavior: 'smooth' }}
+            >
+              {highlightedEvents.map((event, index) => (
+                <EventCard key={index} title={event.title} backgroundImage={event.backgroundImage} showIcons={true} />
+              ))}
+            </div>
+          )}
+        </div>
       </div>
 
       {/* Snow Treks */}
-      <div className="section snow-treks-section mb-10">
+      <div className="section snow-treks-section mb-10 relative">
         <h2 className="text-2xl font-bold mb-2">Snow Treks</h2>
         <p className="text-gray-600 mb-4">Experience the magic of winter landscapes with our guided snow treks</p>
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-          {snowTreks.map((trek, index) => (
-            <StyledEventCard key={index} title={trek.title} backgroundImage={trek.backgroundImage} />
-          ))}
+        
+        <div className="relative">
+          <button 
+            onClick={() => scrollLeft(snowRef)}
+            className="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 bg-white rounded-full p-2 shadow-md hover:bg-gray-100"
+            aria-label="Scroll left"
+          >
+            &lt;
+          </button>
+          <button 
+            onClick={() => scrollRight(snowRef)}
+            className="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 bg-white rounded-full p-2 shadow-md hover:bg-gray-100"
+            aria-label="Scroll right"
+          >
+            &gt;
+          </button>
+          <div 
+            className="flex overflow-x-auto scrollbar-hide space-x-6 py-4"
+            ref={snowRef}
+            style={{ scrollBehavior: 'smooth' }}
+          >
+            {snowTreks.map((trek, index) => (
+              <div key={index} className="flex-shrink-0">
+                <StyledEventCard title={trek.title} backgroundImage={trek.backgroundImage} />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 
       {/* Summer Events */}
-      <div className="section summer-events-section mb-10">
+      <div className="section summer-events-section mb-10 relative">
         <h2 className="text-2xl font-bold mb-2">Summer Events</h2>
         <p className="text-gray-600 mb-4">Join our exciting range of summer activities</p>
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-          {summerEvents.map((event, index) => (
-            <StyledEventCard key={index} title={event.title} backgroundImage={event.backgroundImage} />
-          ))}
+        
+        <div className="relative">
+          <button 
+            onClick={() => scrollLeft(summerRef)}
+            className="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 bg-white rounded-full p-2 shadow-md hover:bg-gray-100"
+            aria-label="Scroll left"
+          >
+            &lt;
+          </button>
+          <button 
+            onClick={() => scrollRight(summerRef)}
+            className="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 bg-white rounded-full p-2 shadow-md hover:bg-gray-100"
+            aria-label="Scroll right"
+          >
+            &gt;
+          </button>
+          <div 
+            className="flex overflow-x-auto scrollbar-hide space-x-6 py-4"
+            ref={summerRef}
+            style={{ scrollBehavior: 'smooth' }}
+          >
+            {summerEvents.map((event, index) => (
+              <div key={index} className="flex-shrink-0">
+                <StyledEventCard title={event.title} backgroundImage={event.backgroundImage} />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 
       {/* Epic Adventures */}
-      <div className="section epic-adventures-section mb-10">
+      <div className="section epic-adventures-section mb-10 relative">
         <h2 className="text-2xl font-bold mb-2">Epic Adventures</h2>
         <p className="text-gray-600 mb-4">Push your limits with our most thrilling outdoor challenges</p>
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-          {epicAdventures.map((adventure, index) => (
-            <StyledEventCard key={index} title={adventure.title} backgroundImage={adventure.backgroundImage} />
-          ))}
+        
+        <div className="relative">
+          <button 
+            onClick={() => scrollLeft(epicRef)}
+            className="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 bg-white rounded-full p-2 shadow-md hover:bg-gray-100"
+            aria-label="Scroll left"
+          >
+            &lt;
+          </button>
+          <button 
+            onClick={() => scrollRight(epicRef)}
+            className="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 bg-white rounded-full p-2 shadow-md hover:bg-gray-100"
+            aria-label="Scroll right"
+          >
+            &gt;
+          </button>
+          <div 
+            className="flex overflow-x-auto scrollbar-hide space-x-6 py-4"
+            ref={epicRef}
+            style={{ scrollBehavior: 'smooth' }}
+          >
+            {epicAdventures.map((adventure, index) => (
+              <div key={index} className="flex-shrink-0">
+                <StyledEventCard title={adventure.title} backgroundImage={adventure.backgroundImage} />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 
       {/* Special Events */}
-      <div className="section special-events-section mb-10">
+      <div className="section special-events-section mb-10 relative">
         <h2 className="text-2xl font-bold mb-2">Special Events</h2>
         <p className="text-gray-600 mb-4">Join us for unique, limited-time gatherings that celebrate remarkable occasions</p>
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-          {specialEvents.map((event, index) => (
-            <StyledEventCard key={index} title={event.title} backgroundImage={event.backgroundImage} />
-          ))}
+        
+        <div className="relative">
+          <button 
+            onClick={() => scrollLeft(specialRef)}
+            className="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 bg-white rounded-full p-2 shadow-md hover:bg-gray-100"
+            aria-label="Scroll left"
+          >
+            &lt;
+          </button>
+          <button 
+            onClick={() => scrollRight(specialRef)}
+            className="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 bg-white rounded-full p-2 shadow-md hover:bg-gray-100"
+            aria-label="Scroll right"
+          >
+            &gt;
+          </button>
+          <div 
+            className="flex overflow-x-auto scrollbar-hide space-x-6 py-4"
+            ref={specialRef}
+            style={{ scrollBehavior: 'smooth' }}
+          >
+            {specialEvents.map((event, index) => (
+              <div key={index} className="flex-shrink-0">
+                <StyledEventCard title={event.title} backgroundImage={event.backgroundImage} />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 
       {/* Experience Yourself Section */}
-      <section className="experience-yourself-section p-6 rounded-xl shadow-lg mt-10 mb-10 bg-pink-100">
+      <section className="experience-yourself-section p-6 rounded-xl shadow-lg mt-10 mb-10 bg-pink-100 relative">
         <div className="mb-8 text-left">
           <h3 className="text-lg text-gray-700 font-semibold">Experience yourself</h3>
           <h2 className="text-2xl font-bold">Exclusive footage from our camps</h2>
         </div>
-        <div className="flex flex-col md:flex-row gap-6 overflow-x-auto pb-4">
-          <ExperienceCard videoUrl="https://www.youtube.com/watch?v=QgwWRQWTLpM" />
-          <ExperienceCard videoUrl="https://www.youtube.com/watch?v=prTzU3yrGcw" />
-          <ExperienceCard videoUrl="https://www.youtube.com/watch?v=ezUpLsgXbeg" />
+        <div className="relative">
+          <button 
+            onClick={() => scrollLeft(experienceRef)}
+            className="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 bg-white rounded-full p-2 shadow-md hover:bg-gray-100"
+            aria-label="Scroll left"
+          >
+            &lt;
+          </button>
+          <button 
+            onClick={() => scrollRight(experienceRef)}
+            className="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 bg-white rounded-full p-2 shadow-md hover:bg-gray-100"
+            aria-label="Scroll right"
+          >
+            &gt;
+          </button>
+          <div 
+            className="flex overflow-x-auto scrollbar-hide space-x-4 pb-4"
+            ref={experienceRef}
+            style={{ scrollBehavior: 'smooth' }}
+          >
+            <ExperienceCard videoUrl="https://www.youtube.com/watch?v=QgwWRQWTLpM" />
+            <ExperienceCard videoUrl="https://www.youtube.com/watch?v=prTzU3yrGcw" />
+            <ExperienceCard videoUrl="https://www.youtube.com/watch?v=ezUpLsgXbeg" />
+          </div>
         </div>
       </section>
 

@@ -1,123 +1,165 @@
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
 .events-container {
   display: flex;
   flex-direction: column;
   gap: 40px;
   padding: 20px;
   background-color: #f9f9f9;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 .section {
   display: flex;
   flex-direction: column;
   gap: 20px;
+  position: relative;
 }
 
 .section h2 {
-  font-size: 24px;
+  font-size: 28px;
   color: #333;
   margin-bottom: 10px;
+  font-weight: 700;
 }
 
+.section h6 {
+  font-size: 20px;
+  color: #555;
+  font-weight: 600;
+}
+
+.section p {
+  color: #666;
+  font-size: 16px;
+  max-width: 800px;
+}
+
+/* Cards Container */
 .cards-container {
   display: flex;
   gap: 20px;
   overflow-x: auto;
-  padding-bottom: 20px;
+  padding: 20px 10px;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  position: relative;
 }
 
+/* Event Card Styles */
 .event-card {
   flex: 0 0 auto;
-  width: 331px;  /* Updated width */
-  height: 360px; /* Updated height */
+  width: 331px;
+  height: 360px;
   border-radius: 12px;
   overflow: hidden;
   position: relative;
   background-size: cover;
   background-position: center;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  scroll-snap-align: start;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* .event-card:hover {
-  transform: scale(1.05);
-} */
+.event-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0) 100%);
+}
 
 .card-content {
   position: absolute;
-  bottom: 10px; /* Slightly raised to avoid overlap */
-  left: 10px;
-  gap: 700px;
-  right: 10px;
-  background: none; /* Removed dark overlay */
-  color: white;
-  padding: 10px;
+  bottom: 20px;
+  left: 0;
+  right: 0;
+  padding: 20px;
   text-align: center;
-  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5); /* Improves text readability */
+  z-index: 2;
 }
 
 .card-content h3 {
-  margin: 0;
-  font-size: 20px;
+  font-family: 'Pacifico', cursive;
+  font-size: 28px;
+  color: white;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+  margin: 0 0 10px 0;
 }
 
-.checkbox-container {
-  margin-top: 10px;
-}
-
-.checkbox-container span {
-  font-size: 18px;
-  color: white; /* Ensures visibility */
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); /* Enhances contrast */
-}
-
-.navigation-marks {
+.icon-container {
   display: flex;
-  justify-content: space-between;
-  padding: 0 10px;
+  justify-content: center;
+  gap: 15px;
+  font-size: 20px;
+  color: white;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
 }
 
-.navigation-marks span {
+/* Styled Event Card (for Snow Treks, Summer Events, etc) */
+.styled-event-card {
+  width: 236px;
+  height: 313px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease;
+  flex-shrink: 0;
+  scroll-snap-align: start;
+}
+
+.styled-event-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Scroll Buttons */
+.scroll-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  background: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  border: none;
   cursor: pointer;
-  font-size: 24px;
+  opacity: 0.9;
+  transition: all 0.3s ease;
+}
+
+.scroll-button:hover {
+  opacity: 1;
+  transform: translateY(-50%) scale(1.1);
+}
+
+.scroll-button.left {
+  left: 10px;
+}
+
+.scroll-button.right {
+  right: 10px;
+}
+
+.scroll-button svg {
+  width: 20px;
+  height: 20px;
   color: #333;
 }
 
-.navigation-marks span:hover {
-  color: #007bff;
-}
-
-/* Specific styles for Snow Treks section */
-.snow-treks-section .event-card {
-  width: 250px;
-  height: 150px;
-  background-size: cover; /* Ensures images are visible */
-  background-position: center;
-}
-
-.snow-treks-section .card-content {
-  padding: 10px;
-  background: none; /* Fully removed dark background */
-  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
-}
-
-.snow-treks-section .card-content h3 {
-  font-size: 18px;
-}
-
-.snow-treks-section .checkbox-container span {
-  font-size: 16px;
-}
-.card-content h3 {
-  font-family: 'Pacifico', cursive;  /* Matches decorative script style */
-  font-size: 28px; /* Adjust size to match the image */
-  color: white;
-  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Adds depth for readability */
-  margin: 0;
-  text-align: center;
-}
-
-
-/* Horizontal Scroll */
+/* Hide scrollbar */
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }
@@ -127,37 +169,69 @@
   scrollbar-width: none;
 }
 
-.snap-x {
-  scroll-snap-type: x mandatory;
+/* Experience Section */
+.experience-yourself-section {
+  background-color: #f8e1e4;
+  border-radius: 16px;
+  padding: 30px;
+  margin: 40px 0;
 }
 
-.snap-start {
-  scroll-snap-align: start;
+/* Testimonials Section */
+.testimonials-section {
+  background-color: white;
+  border-radius: 16px;
+  padding: 30px;
+  margin-top: 40px;
 }
 
-/* Scroll Buttons */
-.fixed {
-  position: fixed;
-  transform: translateY(-50%);
-}
-
-.fixed button {
-  transition: all 0.3s ease;
-  opacity: 0.7;
-}
-
-.fixed button:hover {
-  opacity: 1;
-  transform: scale(1.1) translateY(-50%);
-}
-
+/* Responsive Adjustments */
 @media (max-width: 768px) {
-  .fixed button {
-    display: none;
+  .section h2 {
+    font-size: 24px;
+  }
+  
+  .event-card {
+    width: 280px;
+    height: 300px;
+  }
+  
+  .styled-event-card {
+    width: 200px;
+    height: 280px;
+  }
+  
+  .card-content h3 {
+    font-size: 24px;
+  }
+  
+  .scroll-button {
+    width: 36px;
+    height: 36px;
   }
 }
 
-/* Ensure sections take full width */
-.flex-none {
-  flex: none;
+@media (max-width: 480px) {
+  .events-container {
+    padding: 15px;
+    gap: 30px;
+  }
+  
+  .section {
+    gap: 15px;
+  }
+  
+  .event-card {
+    width: 250px;
+    height: 270px;
+  }
+  
+  .card-content h3 {
+    font-size: 20px;
+  }
+  
+  .icon-container {
+    font-size: 16px;
+    gap: 10px;
+  }
 }
