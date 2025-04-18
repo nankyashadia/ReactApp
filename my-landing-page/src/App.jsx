@@ -20,6 +20,7 @@ import ProfilePage from "./components/ProfilePage"; // ✅ Added this
 
 
 
+
 const App = () => {
   return (
     <Router>

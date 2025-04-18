@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 
+body {
+  margin: 0;
+  overflow-x: hidden;
+}
 .events-container {
   display: flex;
   flex-direction: column;
@@ -8,6 +12,7 @@
   background-color: #f9f9f9;
   max-width: 100%;
   overflow-x: hidden;
+  box-sizing: border-box;
 }
 
 .section {
@@ -46,6 +51,8 @@
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
   position: relative;
+  width: 100%;
+    box-sizing: border-box;
 }
 
 /* Event Card Styles */
@@ -104,7 +111,7 @@
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
 }
 
-/* Styled Event Card (for Snow Treks, Summer Events, etc) */
+/* Styled Event Card */
 .styled-event-card {
   width: 236px;
   height: 313px;
@@ -186,52 +193,86 @@
 }
 
 /* Responsive Adjustments */
-@media (max-width: 768px) {
-  .section h2 {
-    font-size: 24px;
-  }
-  
+@media (max-width: 1024px) {
   .event-card {
-    width: 280px;
+    width: 300px;
+    height: 340px;
+  }
+
+  .styled-event-card {
+    width: 220px;
     height: 300px;
   }
-  
+
+  .card-content h3 {
+    font-size: 24px;
+  }
+}
+@media (max-width: 768px) {
+  .section h2 {
+    font-size: 22px;
+    }
+    
+    .section p {
+      font-size: 14px;
+  }
+
+  .event-card {
+    width: 260px;
+    height: 300px;
+  }
+
   .styled-event-card {
     width: 200px;
     height: 280px;
   }
-  
-  .card-content h3 {
-    font-size: 24px;
-  }
-  
+
   .scroll-button {
     width: 36px;
     height: 36px;
   }
+.icon-container {
+  font-size: 18px;
+}
 }
 
 @media (max-width: 480px) {
   .events-container {
-    padding: 15px;
-    gap: 30px;
+    padding: 10px;
+      gap: 25px;
   }
+
+    .section h2 {
+      font-size: 20px;
+    }
   
-  .section {
-    gap: 15px;
+    .section h6 {
+      font-size: 16px;
+    }
+  
+    .section p {
+      font-size: 13px;
   }
-  
+
   .event-card {
-    width: 250px;
-    height: 270px;
+    width: 230px;
+      height: 260px;
+    }
+    
+    .styled-event-card {
+      width: 180px;
+      height: 250px;
   }
-  
+
   .card-content h3 {
     font-size: 20px;
   }
-  
+
   .icon-container {
     font-size: 16px;
     gap: 10px;
   }
+.scroll-button {
+  display: none;
+}
 }
