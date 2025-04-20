@@ -88,65 +88,59 @@ const Navigation = ({ title }) => {
         </div>
       </div>
 
-      {/* Mobile Navigation - 5 items left, 4 items right */}
+      {/* Mobile Navigation - All 9 items in one column */}
       {isMenuOpen && (
         <div className="md:hidden w-full bg-[#E05C2A] bg-opacity-95 mt-4 rounded-lg shadow-xl">
-          <div className="grid grid-cols-2 gap-4 py-4 px-6">
-            {/* Left Column (5 items) */}
-            <div className="space-y-4">
-              <Link to="/" className="flex items-center space-x-3 hover:text-gray-300" onClick={closeMenu}>
-                <FaHome className="text-xl" />
-                <span>Home</span>
-              </Link>
-              
-              <Link to="/events" className="flex items-center space-x-3 hover:text-gray-300" onClick={closeMenu}>
-                <FaMountain className="text-xl" />
-                <span>Events</span>
-              </Link>
-              
-              <Link to="/teams" className="flex items-center space-x-3 hover:text-gray-300" onClick={closeMenu}>
-                <FaUsers className="text-xl" />
-                <span>Team</span>
-              </Link>
-              
-              <Link to="/about" className="flex items-center space-x-3 hover:text-gray-300" onClick={closeMenu}>
-                <FaInfoCircle className="text-xl" />
-                <span>About</span>
-              </Link>
-              
-              <Link to="/contact" className="flex items-center space-x-3 hover:text-gray-300" onClick={closeMenu}>
-                <FaPhone className="text-xl" />
-                <span>Contact</span>
-              </Link>
-            </div>
-
-            {/* Right Column (4 items) */}
-            <div className="space-y-4">
-              <Link to="/details" className="flex items-center space-x-3 hover:text-gray-300" onClick={closeMenu}>
-                <FaFileAlt className="text-xl" />
-                <span>Details</span>
-              </Link>
-              
-              <Link to="/policy" className="flex items-center space-x-3 hover:text-gray-300" onClick={closeMenu}>
-                <FaShieldAlt className="text-xl" />
-                <span>Privacy</span>
-              </Link>
-              
-              <Link to="/terms" className="flex items-center space-x-3 hover:text-gray-300" onClick={closeMenu}>
-                <FaFileAlt className="text-xl" />
-                <span>Terms</span>
-              </Link>
-              
-              <Link 
-                to="/profile" 
-                state={{ from: location }}
-                className="flex items-center space-x-3 hover:text-gray-300"
-                onClick={closeMenu}
-              >
-                <FaUserCircle className="text-xl" />
-                <span>Profile</span>
-              </Link>
-            </div>
+          <div className="flex flex-col py-4 px-6 space-y-4">
+            <Link to="/" className="flex items-center space-x-3 hover:text-gray-300" onClick={closeMenu}>
+              <FaHome className="text-xl" />
+              <span>Home</span>
+            </Link>
+            
+            <Link to="/events" className="flex items-center space-x-3 hover:text-gray-300" onClick={closeMenu}>
+              <FaMountain className="text-xl" />
+              <span>Events</span>
+            </Link>
+            
+            <Link to="/teams" className="flex items-center space-x-3 hover:text-gray-300" onClick={closeMenu}>
+              <FaUsers className="text-xl" />
+              <span>Team</span>
+            </Link>
+            
+            <Link to="/about" className="flex items-center space-x-3 hover:text-gray-300" onClick={closeMenu}>
+              <FaInfoCircle className="text-xl" />
+              <span>About</span>
+            </Link>
+            
+            <Link to="/contact" className="flex items-center space-x-3 hover:text-gray-300" onClick={closeMenu}>
+              <FaPhone className="text-xl" />
+              <span>Contact</span>
+            </Link>
+            
+            <Link to="/details" className="flex items-center space-x-3 hover:text-gray-300" onClick={closeMenu}>
+              <FaFileAlt className="text-xl" />
+              <span>Details</span>
+            </Link>
+            
+            <Link to="/policy" className="flex items-center space-x-3 hover:text-gray-300" onClick={closeMenu}>
+              <FaShieldAlt className="text-xl" />
+              <span>Privacy</span>
+            </Link>
+            
+            <Link to="/terms" className="flex items-center space-x-3 hover:text-gray-300" onClick={closeMenu}>
+              <FaFileAlt className="text-xl" />
+              <span>Terms</span>
+            </Link>
+            
+            <Link 
+              to="/profile" 
+              state={{ from: location }}
+              className="flex items-center space-x-3 hover:text-gray-300"
+              onClick={closeMenu}
+            >
+              <FaUserCircle className="text-xl" />
+              <span>Profile</span>
+            </Link>
           </div>
         </div>
       )}
