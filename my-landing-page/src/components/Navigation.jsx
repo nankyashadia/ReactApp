@@ -89,7 +89,7 @@ const Navigation = ({ title }) => {
         </div>
       </div>
 
-      {/* Mobile Navigation - Vertical list with icons and names */}
+      {/* Mobile Navigation - Clean vertical list */}
       {isMenuOpen && (
         <div className="md:hidden w-full bg-[#E05C2A] bg-opacity-95 mt-4 rounded-lg shadow-xl">
           <div className="flex flex-col py-4 px-6 space-y-4">
