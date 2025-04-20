@@ -89,51 +89,60 @@ const Navigation = ({ title }) => {
         </div>
       </div>
 
-      {/* Mobile Navigation - only icons */}
+      {/* Mobile Navigation - Vertical list with icons and names */}
       {isMenuOpen && (
         <div className="md:hidden w-full bg-[#E05C2A] bg-opacity-95 mt-4 rounded-lg shadow-xl">
-          <div className="grid grid-cols-4 gap-4 py-4 px-6">
-            {/* Primary Navigation Icons */}
-            <Link to="/" className="flex flex-col items-center p-2 hover:text-gray-300" onClick={closeMenu}>
-              <FaHome className="text-2xl" />
+          <div className="flex flex-col py-4 px-6 space-y-4">
+            {/* Primary Navigation */}
+            <Link to="/" className="flex items-center space-x-4 py-2 hover:text-gray-300" onClick={closeMenu}>
+              <FaHome className="text-xl" />
+              <span>Home</span>
             </Link>
             
-            <Link to="/events" className="flex flex-col items-center p-2 hover:text-gray-300" onClick={closeMenu}>
-              <FaMountain className="text-2xl" />
+            <Link to="/events" className="flex items-center space-x-4 py-2 hover:text-gray-300" onClick={closeMenu}>
+              <FaMountain className="text-xl" />
+              <span>Events</span>
             </Link>
             
-            <Link to="/teams" className="flex flex-col items-center p-2 hover:text-gray-300" onClick={closeMenu}>
-              <FaUsers className="text-2xl" />
+            <Link to="/teams" className="flex items-center space-x-4 py-2 hover:text-gray-300" onClick={closeMenu}>
+              <FaUsers className="text-xl" />
+              <span>Team</span>
             </Link>
             
-            <Link to="/about" className="flex flex-col items-center p-2 hover:text-gray-300" onClick={closeMenu}>
-              <FaInfoCircle className="text-2xl" />
+            <Link to="/about" className="flex items-center space-x-4 py-2 hover:text-gray-300" onClick={closeMenu}>
+              <FaInfoCircle className="text-xl" />
+              <span>About</span>
             </Link>
             
-            <Link to="/contact" className="flex flex-col items-center p-2 hover:text-gray-300" onClick={closeMenu}>
-              <FaPhone className="text-2xl" />
+            <Link to="/contact" className="flex items-center space-x-4 py-2 hover:text-gray-300" onClick={closeMenu}>
+              <FaPhone className="text-xl" />
+              <span>Contact</span>
+            </Link>
+
+            {/* Secondary Navigation */}
+            <Link to="/details" className="flex items-center space-x-4 py-2 hover:text-gray-300" onClick={closeMenu}>
+              <FaFileAlt className="text-xl" />
+              <span>Details</span>
             </Link>
             
-            {/* Secondary Navigation Icons */}
-            <Link to="/details" className="flex flex-col items-center p-2 hover:text-gray-300" onClick={closeMenu}>
-              <FaFileAlt className="text-2xl" />
+            <Link to="/policy" className="flex items-center space-x-4 py-2 hover:text-gray-300" onClick={closeMenu}>
+              <FaShieldAlt className="text-xl" />
+              <span>Privacy</span>
             </Link>
             
-            <Link to="/policy" className="flex flex-col items-center p-2 hover:text-gray-300" onClick={closeMenu}>
-              <FaShieldAlt className="text-2xl" />
-            </Link>
-            
-            <Link to="/terms" className="flex flex-col items-center p-2 hover:text-gray-300" onClick={closeMenu}>
-              <FaFileAlt className="text-2xl" />
+            <Link to="/terms" className="flex items-center space-x-4 py-2 hover:text-gray-300" onClick={closeMenu}>
+              <FaFileAlt className="text-xl" />
+              <span>Terms</span>
             </Link>
             
             <Link 
               to="/profile" 
               state={{ from: location }}
-              className="flex flex-col items-center p-2 hover:text-gray-300" 
+              className="flex items-center space-x-4 py-2 hover:text-gray-300"
               onClick={closeMenu}
             >
-              <FaUserCircle className="text-2xl" />
+              <FaUserCircle className="text-xl" />
+              <span>Profile</span>
             </Link>
           </div>
         </div>
