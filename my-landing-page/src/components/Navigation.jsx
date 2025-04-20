@@ -21,11 +21,15 @@ const Navigation = ({ title }) => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+  };
+
   return (
     <nav className="flex flex-col md:flex-row justify-between items-center px-4 md:px-10 py-5 text-white bg-transparent absolute top-0 left-0 right-0 z-10">
       {/* Logo/Title and Mobile Menu Button */}
       <div className="flex justify-between w-full md:w-auto items-center">
-        <Link to="/" className="text-2xl font-bold hover:text-gray-300">
+        <Link to="/" className="text-2xl font-bold hover:text-gray-300" onClick={closeMenu}>
           {title}
         </Link>
         
@@ -33,6 +37,7 @@ const Navigation = ({ title }) => {
         <button 
           className="md:hidden text-white focus:outline-none"
           onClick={toggleMenu}
+          aria-label="Toggle menu"
         >
           {isMenuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
         </button>
@@ -84,84 +89,52 @@ const Navigation = ({ title }) => {
         </div>
       </div>
 
-      {/* Mobile Navigation - only visible when menu is open on small screens */}
+      {/* Mobile Navigation - only icons */}
       {isMenuOpen && (
         <div className="md:hidden w-full bg-[#E05C2A] bg-opacity-95 mt-4 rounded-lg shadow-xl">
-          <div className="flex flex-col py-4 px-6 space-y-4">
-            <Link 
-              to="/" 
-              className="flex items-center space-x-2 py-2 hover:text-gray-300"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              <FaHome className="text-lg" /> <span>Home</span>
+          <div className="grid grid-cols-4 gap-4 py-4 px-6">
+            {/* Primary Navigation Icons */}
+            <Link to="/" className="flex flex-col items-center p-2 hover:text-gray-300" onClick={closeMenu}>
+              <FaHome className="text-2xl" />
+            </Link>
+            
+            <Link to="/events" className="flex flex-col items-center p-2 hover:text-gray-300" onClick={closeMenu}>
+              <FaMountain className="text-2xl" />
+            </Link>
+            
+            <Link to="/teams" className="flex flex-col items-center p-2 hover:text-gray-300" onClick={closeMenu}>
+              <FaUsers className="text-2xl" />
+            </Link>
+            
+            <Link to="/about" className="flex flex-col items-center p-2 hover:text-gray-300" onClick={closeMenu}>
+              <FaInfoCircle className="text-2xl" />
+            </Link>
+            
+            <Link to="/contact" className="flex flex-col items-center p-2 hover:text-gray-300" onClick={closeMenu}>
+              <FaPhone className="text-2xl" />
+            </Link>
+            
+            {/* Secondary Navigation Icons */}
+            <Link to="/details" className="flex flex-col items-center p-2 hover:text-gray-300" onClick={closeMenu}>
+              <FaFileAlt className="text-2xl" />
+            </Link>
+            
+            <Link to="/policy" className="flex flex-col items-center p-2 hover:text-gray-300" onClick={closeMenu}>
+              <FaShieldAlt className="text-2xl" />
+            </Link>
+            
+            <Link to="/terms" className="flex flex-col items-center p-2 hover:text-gray-300" onClick={closeMenu}>
+              <FaFileAlt className="text-2xl" />
             </Link>
             
             <Link 
-              to="/events" 
-              className="flex items-center space-x-2 py-2 hover:text-gray-300"
-              onClick={() => setIsMenuOpen(false)}
+              to="/profile" 
+              state={{ from: location }}
+              className="flex flex-col items-center p-2 hover:text-gray-300" 
+              onClick={closeMenu}
             >
-              <FaMountain className="text-lg" /> <span>Events</span>
+              <FaUserCircle className="text-2xl" />
             </Link>
-            
-            <Link 
-              to="/teams" 
-              className="flex items-center space-x-2 py-2 hover:text-gray-300"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              <FaUsers className="text-lg" /> <span>Team</span>
-            </Link>
-            
-            <Link 
-              to="/about" 
-              className="flex items-center space-x-2 py-2 hover:text-gray-300"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              <FaInfoCircle className="text-lg" /> <span>About</span>
-            </Link>
-            
-            <Link 
-              to="/contact" 
-              className="flex items-center space-x-2 py-2 hover:text-gray-300"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              <FaPhone className="text-lg" /> <span>Contact</span>
-            </Link>
-            
-            <div className="border-t border-white border-opacity-20 pt-4">
-              <Link 
-                to="/details" 
-                className="flex items-center space-x-2 py-2 hover:text-gray-300"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                <FaFileAlt className="text-lg" /> <span>Details</span>
-              </Link>
-              
-              <Link 
-                to="/policy" 
-                className="flex items-center space-x-2 py-2 hover:text-gray-300"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                <FaShieldAlt className="text-lg" /> <span>Privacy</span>
-              </Link>
-              
-              <Link 
-                to="/terms" 
-                className="flex items-center space-x-2 py-2 hover:text-gray-300"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                <FaFileAlt className="text-lg" /> <span>Terms</span>
-              </Link>
-              
-              <Link 
-                to="/profile" 
-                state={{ from: location }}
-                className="flex items-center space-x-2 py-2 hover:text-gray-300"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                <FaUserCircle className="text-lg" /> <span>Profile</span>
-              </Link>
-            </div>
           </div>
         </div>
       )}
