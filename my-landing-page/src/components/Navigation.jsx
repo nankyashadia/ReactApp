@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import {
   FaHome,
@@ -8,21 +8,38 @@ import {
   FaPhone,
   FaFileAlt,
   FaShieldAlt,
-  FaUserCircle
+  FaUserCircle,
+  FaBars,
+  FaTimes
 } from 'react-icons/fa';
 
 const Navigation = ({ title }) => {
   const location = useLocation();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
 
   return (
     <nav className="flex flex-col md:flex-row justify-between items-center px-4 md:px-10 py-5 text-white bg-transparent absolute top-0 left-0 right-0 z-10">
-      {/* Logo/Title - Always visible */}
-      <Link to="/" className="text-2xl font-bold mb-4 md:mb-0 hover:text-gray-300">
-        {title}
-      </Link>
-      
-      {/* Main Navigation - Improved for mobile */}
-      <div className="flex flex-wrap justify-center gap-4 md:gap-8 items-center">
+      {/* Logo/Title and Mobile Menu Button */}
+      <div className="flex justify-between w-full md:w-auto items-center">
+        <Link to="/" className="text-2xl font-bold hover:text-gray-300">
+          {title}
+        </Link>
+        
+        {/* Mobile menu button - only visible on small screens */}
+        <button 
+          className="md:hidden text-white focus:outline-none"
+          onClick={toggleMenu}
+        >
+          {isMenuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
+        </button>
+      </div>
+
+      {/* Main Navigation - Desktop (always visible on md+) */}
+      <div className="hidden md:flex flex-wrap justify-center gap-4 md:gap-8 items-center">
         <Link to="/" className="flex items-center space-x-2 hover:text-gray-300 min-w-[80px]">
           <FaHome className="text-lg" /> <span className="text-sm md:text-base">Home</span>
         </Link>
@@ -43,7 +60,7 @@ const Navigation = ({ title }) => {
           <FaPhone className="text-lg" /> <span className="text-sm md:text-base">Contact</span>
         </Link>
         
-        {/* Secondary Navigation - More compact */}
+        {/* Secondary Navigation */}
         <div className="flex gap-4 md:gap-6">
           <Link to="/details" className="flex items-center space-x-1 hover:text-gray-300">
             <FaFileAlt className="text-sm" /> <span className="text-xs md:text-sm">Details</span>
@@ -66,6 +83,88 @@ const Navigation = ({ title }) => {
           </Link>
         </div>
       </div>
+
+      {/* Mobile Navigation - only visible when menu is open on small screens */}
+      {isMenuOpen && (
+        <div className="md:hidden w-full bg-[#E05C2A] bg-opacity-95 mt-4 rounded-lg shadow-xl">
+          <div className="flex flex-col py-4 px-6 space-y-4">
+            <Link 
+              to="/" 
+              className="flex items-center space-x-2 py-2 hover:text-gray-300"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              <FaHome className="text-lg" /> <span>Home</span>
+            </Link>
+            
+            <Link 
+              to="/events" 
+              className="flex items-center space-x-2 py-2 hover:text-gray-300"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              <FaMountain className="text-lg" /> <span>Events</span>
+            </Link>
+            
+            <Link 
+              to="/teams" 
+              className="flex items-center space-x-2 py-2 hover:text-gray-300"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              <FaUsers className="text-lg" /> <span>Team</span>
+            </Link>
+            
+            <Link 
+              to="/about" 
+              className="flex items-center space-x-2 py-2 hover:text-gray-300"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              <FaInfoCircle className="text-lg" /> <span>About</span>
+            </Link>
+            
+            <Link 
+              to="/contact" 
+              className="flex items-center space-x-2 py-2 hover:text-gray-300"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              <FaPhone className="text-lg" /> <span>Contact</span>
+            </Link>
+            
+            <div className="border-t border-white border-opacity-20 pt-4">
+              <Link 
+                to="/details" 
+                className="flex items-center space-x-2 py-2 hover:text-gray-300"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                <FaFileAlt className="text-lg" /> <span>Details</span>
+              </Link>
+              
+              <Link 
+                to="/policy" 
+                className="flex items-center space-x-2 py-2 hover:text-gray-300"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                <FaShieldAlt className="text-lg" /> <span>Privacy</span>
+              </Link>
+              
+              <Link 
+                to="/terms" 
+                className="flex items-center space-x-2 py-2 hover:text-gray-300"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                <FaFileAlt className="text-lg" /> <span>Terms</span>
+              </Link>
+              
+              <Link 
+                to="/profile" 
+                state={{ from: location }}
+                className="flex items-center space-x-2 py-2 hover:text-gray-300"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                <FaUserCircle className="text-lg" /> <span>Profile</span>
+              </Link>
+            </div>
+          </div>
+        </div>
+      )}
     </nav>
   );
 };
