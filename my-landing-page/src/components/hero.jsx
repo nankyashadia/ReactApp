@@ -14,8 +14,8 @@ const Hero = ({ backgroundImage }) => {
     >
       {/* Hero Content */}
       <div className="relative z-10 ml-10 mt-30">
-        <h2 className="text-5xl font-semibold mb-3">Experience</h2>
-        <h2 className="text-5xl font-semibold mt-3">Nature</h2>
+        <h2 className="text-5xl font-semibold mb-0">Experience</h2>
+        <h2 className="text-5xl font-semibold mt-0">Nature</h2>
         <p className="text-lg mt-40">India's Largest Trekking Organization</p>
 
         {/* Stats Section */}
