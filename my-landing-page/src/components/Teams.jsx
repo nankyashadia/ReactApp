@@ -45,16 +45,17 @@ const Teams = () => {
 
     return (
         <div className="min-h-screen text-gray-900 bg-white">
-            {/* Header Section */}
-            <div className="bg-[#E05C2A] text-white py-4 px-6">
-                <div className="mt-4 flex items-center">
-                    <div>
-                        <p className="ml-8 text-xl">Our Team</p>
-                        <p className="ml-4 text-xl">Meet the heroes behind our Success.</p>
+            {/* ONLY ADDED THIS HEADER SECTION - REST REMAINS UNCHANGED */}
+            <div className="bg-[#E05C2A] text-white pt-24 pb-4 px-6">
+                <div className="mt-4 flex flex-col md:flex-row items-center">
+                    <div className="mb-4 md:mb-0">
+                        <p className="text-xl font-bold">Our Team</p>
+                        <p className="text-lg">Meet the heroes behind our Success.</p>
                     </div>
                 </div>
             </div>
 
+            {/* REST OF YOUR ORIGINAL CODE REMAINS EXACTLY THE SAME */}
             {error && (
                 <div className="container mx-auto px-4 py-2 text-red-500">
                     {error}

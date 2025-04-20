@@ -1,91 +1,145 @@
 import React, { useState, useContext } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
-import { AuthContext } from './AuthContext';
-import IMAGES from '../assets/images/image';
+import { useNavigate } from 'react-router-dom';
+import { AuthContext } from "./AuthContext";
 
-const LoginPage = () => {
-  const [formData, setFormData] = useState({
-    username: '',
-    password: ''
-  });
 
-  const { login } = useContext(AuthContext);
+const LoginSignupPage = () => {
   const navigate = useNavigate();
-  const location = useLocation();
+  const { login } = useContext(AuthContext);
 
-  // Capture the original route user was trying to access
-  const from = location.state?.from?.pathname || '/';
+  const [isLogin, setIsLogin] = useState(true);
+  const [loginData, setLoginData] = useState({ username: '', password: '' });
+  const [signupData, setSignupData] = useState({ name: '', username: '', password: '' });
+  const [error, setError] = useState('');
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value
-    });
+  const toggleMode = () => {
+    setIsLogin(!isLogin);
+    setError('');
   };
 
-  const validateForm = () => {
-    return formData.username.length >= 3 && formData.password.length >= 8;
+  const handleLoginChange = (e) => {
+    setLoginData({ ...loginData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSignupChange = (e) => {
+    setSignupData({ ...signupData, [e.target.name]: e.target.value });
+  };
+
+  const handleLoginSubmit = async (e) => {
     e.preventDefault();
-
-    if (validateForm()) {
-      try {
-        await login(formData.username, formData.password);
-        navigate(from, { replace: true }); // Redirect back to original route
-      } catch (err) {
-        console.error("Login error:", err);
-        alert("Invalid login credentials");
-      }
-      
+    setError('');
+    try {
+      await login(loginData.username, loginData.password);
+      navigate('/profile');
+    } catch {
+      setError('Invalid username or password');
     }
-    
+  };
+
+  const handleSignupSubmit = async (e) => {
+    e.preventDefault();
+    // Here you can store to localStorage or just simulate success
+    if (signupData.username && signupData.password.length >= 8 && signupData.name) {
+      alert('Signup successful! Please login.');
+      setIsLogin(true);
+    } else {
+      setError('Please fill in all fields with valid info.');
+    }
   };
 
   return (
-    <div 
-      className="min-h-screen flex items-center justify-center bg-cover bg-center"
-      style={{ backgroundImage: `url(${IMAGES.Heros})` }}
-    >
-      <div className="max-w-md w-full mx-4 p-6 bg-white bg-opacity-90 rounded-lg shadow-md">
-        <h2 className="text-2xl font-bold mb-6 text-center text-gray-800">Login</h2>
-        <form onSubmit={handleSubmit}>
-          <div className="mb-4">
-            <label className="block text-left text-bold text-gray-700 mb-2">Username:</label>
-            <input
-              type="text"
-              name="username"
-              placeholder='username'
-              value={formData.username}
-              onChange={handleChange}
-              className="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white"
-              autoComplete="username"
-            />
-          </div>
-          <div className="mb-6">
-            <label className="block text-left text-gray-700 mb-2">Password:</label>
-            <input
-              type="password"
-              name="password"
-              placeholder='password'
-              value={formData.password}
-              onChange={handleChange}
-              className="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white"
-              autoComplete="current-password"
-            />
-          </div>
-          <button
-            type="submit"
-            className="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600 transition"
-          >
-            Login
+    <div className="min-h-screen flex items-center justify-center bg-gray-100">
+      <div className="max-w-md w-full p-8 bg-white rounded shadow">
+        <h2 className="text-2xl font-bold text-center mb-6">
+          {isLogin ? 'Login to Your Account' : 'Create an Account'}
+        </h2>
+
+        {error && <p className="text-red-500 text-sm mb-4 text-center">{error}</p>}
+
+        {isLogin ? (
+          <form onSubmit={handleLoginSubmit}>
+            <div className="mb-4">
+              <label className="block text-sm font-medium">Username</label>
+              <input
+                type="text"
+                name="username"
+                value={loginData.username}
+                onChange={handleLoginChange}
+                required
+                className="w-full p-2 mt-1 border rounded"
+              />
+            </div>
+            <div className="mb-6">
+              <label className="block text-sm font-medium">Password</label>
+              <input
+                type="password"
+                name="password"
+                value={loginData.password}
+                onChange={handleLoginChange}
+                required
+                className="w-full p-2 mt-1 border rounded"
+              />
+            </div>
+            <button
+              type="submit"
+              className="w-full bg-orange-500 text-white py-2 rounded hover:bg-orange-600"
+            >
+              Login
+            </button>
+          </form>
+        ) : (
+          <form onSubmit={handleSignupSubmit}>
+            <div className="mb-4">
+                <label className="block text-sm font-medium">Name</label>
+                <input
+                  type="text"
+                  name="name"
+                  value={signupData.name}
+                  onChange={handleSignupChange}
+                  required
+                  className="w-full p-2 mt-1 border rounded"
+                />
+              </div>
+              <div className="mb-4">
+                <label className="block text-sm font-medium">Username</label>
+                <input
+                  type="text"
+                  name="username"
+                  value={signupData.username}
+                  onChange={handleSignupChange}
+                  required
+                  className="w-full p-2 mt-1 border rounded"
+                />
+              </div>
+              <div className="mb-6">
+                <label className="block text-sm font-medium">Password (min 8 characters)</label>
+                <input
+                  type="password"
+                  name="password"
+                  value={signupData.password}
+                  onChange={handleSignupChange}
+                  required
+                  className="w-full p-2 mt-1 border rounded"
+                />
+              </div>
+              <button
+                type="submit"
+                className="w-full bg-orange-500 text-white py-2 rounded hover:bg-orange-600"
+              >
+                Sign Up
+              </button>
+            </form>
+        )}
+
+        <p className="mt-4 text-center text-sm">
+          {isLogin ? "Don't have an account?" : 'Already have an account?'}{' '}
+          <button onClick={toggleMode} className="text-blue-500 hover:underline">
+            {isLogin ? 'Sign up' : 'Login'}
           </button>
-        </form>
+        </p>
       </div>
     </div>
   );
 };
 
-export default LoginPage;
+export default LoginSignupPage;

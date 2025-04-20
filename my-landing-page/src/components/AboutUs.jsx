@@ -43,15 +43,17 @@ const AboutUs = () => {
 
   return (
     <div className="min-h-screen text-gray-900 bg-white">
-      {/* Header */}
-      <div className="bg-[#E05C2A] text-white py-4 px-6">
-        <div className="mt-4">
-          <p className="ml-4 text-xl font-semibold">About Us</p>
-          <p className="ml-4 text-md">Our vision, mission and objectives</p>
+      {/* ONLY MODIFIED THIS HEADER SECTION */}
+      <div className="bg-[#E05C2A] text-white pt-24 pb-4 px-6">
+        <div className="mt-4 flex flex-col md:flex-row items-center">
+          <div className="mb-4 md:mb-0">
+            <p className="text-xl font-bold">About Us</p>
+            <p className="text-lg">Our vision, mission and objectives</p>
+          </div>
         </div>
       </div>
 
-      {/* Content */}
+      {/* REST OF THE CODE REMAINS EXACTLY THE SAME */}
       <div className="max-w-4xl mx-auto py-8 px-6">
         {loading ? (
           <div className="text-center mt-10">

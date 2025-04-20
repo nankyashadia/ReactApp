@@ -8,7 +8,7 @@ const EVENTS_PER_PAGE = 3;
 
 const Events = () => {
   const [eventCategories, setEventCategories] = useState({});
-  const [visibleCounts, setVisibleCounts] = useState({}); // Track how many events are visible per category
+  const [visibleCounts, setVisibleCounts] = useState({});
 
   useEffect(() => {
     const fetchEvents = async () => {
@@ -16,7 +16,6 @@ const Events = () => {
         const response = await axios.get(ENDPOINTS.ALL_EVENTS);
         setEventCategories(response.data);
 
-        // Initialize visible count for each category
         const initialCounts = {};
         Object.keys(response.data).forEach((key) => {
           initialCounts[key] = EVENTS_PER_PAGE;
@@ -46,14 +45,14 @@ const Events = () => {
 
   return (
     <div className="min-h-screen text-gray-900 bg-white">
-      {/* Header */}
-      <div className="bg-[#E05C2A] text-white py-4 px-6">
-        <div className="mt-4 flex items-center">
-          <div>
-            <p className="ml-4 text-xl">Events</p>
-            <p className="ml-4 text-xl">Life is either a daring adventure or nothing.</p>
+      {/* Header with the exact code you requested */}
+      <div className="bg-[#E05C2A] text-white pt-24 pb-4 px-6">
+        <div className="mt-4 flex flex-col md:flex-row items-center">
+          <div className="mb-4 md:mb-0">
+            <p className="text-xl font-bold">Events</p>
+            <p className="text-lg">Life is either a daring adventure or nothing.</p>
           </div>
-          <div className="flex items-center bg-white rounded-full p-2 shadow-md max-w-md w-full ml-auto">
+          <div className="flex items-center bg-white rounded-full p-2 shadow-md max-w-md w-full md:ml-auto">
             <input
               type="text"
               placeholder="Search Here"
@@ -66,7 +65,7 @@ const Events = () => {
         </div>
       </div>
 
-      {/* Events */}
+      {/* Rest of your original Events page code remains unchanged */}
       <div className="container mx-auto px-4 py-8">
         {Object.entries(eventCategories).map(([categoryName, events]) => {
           const visibleCount = visibleCounts[categoryName] || EVENTS_PER_PAGE;

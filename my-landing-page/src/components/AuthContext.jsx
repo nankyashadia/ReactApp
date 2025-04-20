@@ -3,7 +3,7 @@ import React, { createContext, useState, useEffect } from 'react';
 export const AuthContext = createContext();
 
 const hardcodedUser = {
-  username: 'nankya',
+  username: 'Sofia',
   password: 'Shady@189',
   name: 'Nankya Shadia',
   role: 'admin',
