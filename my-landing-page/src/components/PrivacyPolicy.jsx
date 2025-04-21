@@ -40,7 +40,7 @@ const PrivacyPolicy = () => {
 
   return (
     <div className="min-h-screen text-gray-900 bg-white">
-      {/* ONLY MODIFIED THIS HEADER SECTION */}
+      {/* Header */}
       <div className="bg-[#E05C2A] text-white pt-24 pb-4 px-6">
         <div className="mt-4 flex flex-col md:flex-row items-center">
           <div className="mb-4 md:mb-0">
@@ -50,20 +50,20 @@ const PrivacyPolicy = () => {
         </div>
       </div>
 
-      {/* REST OF THE CODE REMAINS EXACTLY THE SAME */}
+      {/* Main Content */}
       <div className="max-w-4xl mx-auto py-8 px-6">
         <h2 className="text-2xl font-bold text-orange-600 mb-4">{sections.title}</h2>
 
         {sections.confidentiality && (
           <div className="mb-6">
-            <h3 className="text-xl font-semibold text-gray-800 mb-2">Confidentiality</h3>
+            <h3 className="text-xl font-semibold text-[#6E2E2A] mb-2">Confidentiality</h3>
             <p className="whitespace-pre-line">{sections.confidentiality}</p>
           </div>
         )}
 
         {sections.cookies && (
           <div className="mb-6">
-            <h3 className="text-xl font-semibold text-gray-800 mb-2">Cookie Usage</h3>
+            <h3 className="text-xl font-semibold text-[#6E2E2A] mb-2">Cookie Usage</h3>
             <p className="whitespace-pre-line">{sections.cookies}</p>
           </div>
         )}

@@ -4,6 +4,7 @@ body {
   margin: 0;
   overflow-x: hidden;
 }
+
 .events-container {
   display: flex;
   flex-direction: column;
@@ -24,19 +25,19 @@ body {
 
 .section h2 {
   font-size: 28px;
-  color: #333;
+  color: #6E2E2A; /* Modified */
   margin-bottom: 10px;
   font-weight: 700;
 }
 
 .section h6 {
   font-size: 20px;
-  color: #555;
+  color: #6E2E2A; /* Modified */
   font-weight: 600;
 }
 
 .section p {
-  color: #666;
+  color: #6E2E2A; /* Modified */
   font-size: 16px;
   max-width: 800px;
 }
@@ -52,7 +53,7 @@ body {
   -webkit-overflow-scrolling: touch;
   position: relative;
   width: 100%;
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 /* Event Card Styles */
@@ -211,10 +212,10 @@ body {
 @media (max-width: 768px) {
   .section h2 {
     font-size: 22px;
-    }
-    
-    .section p {
-      font-size: 14px;
+  }
+
+  .section p {
+    font-size: 14px;
   }
 
   .event-card {
@@ -231,37 +232,38 @@ body {
     width: 36px;
     height: 36px;
   }
-.icon-container {
-  font-size: 18px;
-}
+
+  .icon-container {
+    font-size: 18px;
+  }
 }
 
 @media (max-width: 480px) {
   .events-container {
     padding: 10px;
-      gap: 25px;
+    gap: 25px;
   }
 
-    .section h2 {
-      font-size: 20px;
-    }
-  
-    .section h6 {
-      font-size: 16px;
-    }
-  
-    .section p {
-      font-size: 13px;
+  .section h2 {
+    font-size: 20px;
+  }
+
+  .section h6 {
+    font-size: 16px;
+  }
+
+  .section p {
+    font-size: 13px;
   }
 
   .event-card {
     width: 230px;
-      height: 260px;
-    }
-    
-    .styled-event-card {
-      width: 180px;
-      height: 250px;
+    height: 260px;
+  }
+
+  .styled-event-card {
+    width: 180px;
+    height: 250px;
   }
 
   .card-content h3 {
@@ -272,7 +274,21 @@ body {
     font-size: 16px;
     gap: 10px;
   }
-.scroll-button {
-  display: none;
+
+  .scroll-button {
+    display: none;
+  }
 }
+/* Apply brown color to 'Experience Yourself' section headers */
+.experience-yourself-section h2,
+.experience-yourself-section h3,
+.experience-yourself-section h6 {
+  color: #5C4033;
+}
+
+/* Apply brown color to 'What People Say' (Testimonials) section headers */
+.testimonials-section h2,
+.testimonials-section h3,
+.testimonials-section h6 {
+  color: #5C4033;
 }

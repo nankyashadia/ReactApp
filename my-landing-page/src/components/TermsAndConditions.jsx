@@ -5,7 +5,7 @@ import { ENDPOINTS } from "../Utilities/Util";
 import BookingConfirmation from "./BookingConfirmation";
 import Payment from "./Payment";
 import CancellationsRefunds from "./CancellationsRefunds";
-import Footer from './Footer';
+import Footer from "./Footer";
 
 const TermsAndConditions = () => {
   const [termsContent, setTermsContent] = useState("");
@@ -48,16 +48,29 @@ const TermsAndConditions = () => {
         ) : error ? (
           <p className="text-red-500">{error}</p>
         ) : (
-          <div className="whitespace-pre-line text-gray-800 leading-relaxed">
-            {termsContent}
+          <div className="leading-relaxed text-gray-800">
+            {termsContent.split("\n").map((line, index) => {
+              const trimmed = line.trim();
+              const isHeading = /^\d+\.\s[A-Za-z]/.test(trimmed);
+
+              return (
+                <p
+                  key={index}
+                  className={`mb-4 ${isHeading ? "text-[#6E2E2A] font-bold text-lg mt-6" : ""}`}
+                >
+                  {trimmed}
+                </p>
+              );
+            })}
           </div>
         )}
       </div>
 
-      {/* Static Sections
-      <BookingConfirmation />
+      {/* Optional static sections (currently commented out) */}
+      {/* <BookingConfirmation />
       <Payment />
       <CancellationsRefunds /> */}
+
       <Footer />
     </div>
   );
