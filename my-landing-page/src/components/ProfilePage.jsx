@@ -54,7 +54,7 @@ const ProfilePage = () => {
           <div className="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
             <span className="text-gray-600 font-medium">Email</span>
             <span className="text-gray-800 font-semibold">
-              {user?.email || 'user@example.com'}
+              {user?.email || 'Sofia23@gmail.com'}
             </span>
           </div>
           
