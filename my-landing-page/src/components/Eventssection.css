@@ -292,3 +292,21 @@ body {
 .testimonials-section h6 {
   color: #5C4033;
 }
+/* Add these to your existing CSS */
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+.events-container {
+  padding: 0; /* Remove padding if it's causing space */
+  margin: 0;  /* Remove margin if it's causing space */
+}
+
+/* If you have a specific container for your landing content */
+.landing-container {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
